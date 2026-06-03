@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10 шагов к понимаю себя и своего будущего</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #5b6472;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 12px 0 32px;
+    }
+
+    .hero {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		overflow: hidden;
+		border-radius: 28px;
+		box-shadow: var(--shadow);
+		background: #0f172a;
+		min-height: 260px;
+	    padding: 45px;
+    }
+
+    .hero img {
+	  position: absolute;
+	  height: 100%;
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.02), rgba(15, 23, 42, 0.45));
+      pointer-events: none;
+    }
+
+    .hero__content {
+      z-index: 1;
+      color: #fff;
+      max-width: 760px;
+      min-width: 100%;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: clamp(0.98rem, 1.6vw, 1.08rem);
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 62ch;
+    }
+
+    .content {
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(16px, 2.2vw, 24px);
+      box-shadow: var(--shadow);
+    }
+
+    .step__head {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .num {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.25;
+    }
+
+    p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .label {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: #f8fafc;
+      color: #334155;
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    @media (min-width: 760px) {
+      .content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 540px) {
+
+      .hero {
+        border-radius: 22px;
+	    padding: 20px;
+      }
+
+      .step {
+        border-radius: 18px;
+      }
+
+      .step__head {
+        gap: 12px;
+      }
+
+      .num {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <img
+        src="image.jpg"
+        alt="Понимание себя и будущего"
+      />
+      <div class="hero__content">
+        <h1>10 шагов к понимаю себя и своего будущего</h1>
+        <p class="subtitle">Простой и адаптивный сайт с понятной структурой: изображение сверху и 10 практических шагов снизу.</p>
+      </div>
+    </section>
+
+    <section class="content">
+      <article class="step">
+        <div class="step__head"><div class="num">1</div><h2>Определи свои жизненные ценности.</h2></div>
+        <p>Составь список из 10 самых важных для тебя вещей и расположи их по степени значимости.</p>
+        <div class="label">Зачем? Ценности помогают принимать решения и выбирать жизненные ориентиры.</div>
+      </article>
+
+      <article class="step">
+        <div class="step__head"><div class="num">2</div><h2>Проведи анализ своих сильных и слабых сторон.</h2></div>
+        <p>Раздели лист на четыре части: «Мои сильные стороны», «Мои ограничения», «Мои возможности», «Мои риски».</p>
+        <div class="label">Зачем? Это позволит объективно оценить себя и понять, над чем стоит работать.</div>
+      </article>
+
+      <article class="step">
+        <div class="step__head"><div class="num">3</div><h2>Сформулируй личные цели на ближайшие 3–5 лет.</h2></div>
+        <p>Определи, чего хочешь достичь в учёбе, профессии, отношениях и саморазвитии.</p>
+        <div class="label">Зачем? Чёткие цели помогают осознанно строить своё будущее.</div>
+      </article>
+
+      <article class="step">
+        <div class="step__head"><div class="num">4</div><h2>Регулярно анализируй свои решения.</h2></div>
+        <p>После значимых поступков отвечай себе на вопросы: «Почему я выбрал именно этот вариант? Какие последствия он принёс?»</p>
+        <div class="label">Зачем? Это развивает умение учиться на собственном опыте.</div>
+      </article>
+
+      <article class="step">
+        <div class="step__head"><div class="num">5</div><h2>Веди дневник саморефлексии.</h2></div>
+        <p>Не просто описывай события, а анализируй свои переживания, мотивы поступков и изменения взглядов.</p>
+        <div class="label">Зачем? Такой анализ помогает глубже понимать себя и свои внутренние переживания.</div>
+      </article>
+
+      <article class="step">
+        <div class="step__head"><div class="num">6</div><h2>Изучай свои профессиональные интересы.</h2></div>
+        <p>Участвуй в профориентационных мероприятиях, проходи диагностические методики и знакомься с различными профессиями.</p>
+        <div class="label">Зачем? Это поможет сделать более осознанный выбор будущей профессии.</div>
+      </article>
+
+      <article class="step">
+        <div class="step__head"><div class="num">7</div><h2>Отслеживай влияние окружающих на свои решения.</h2></div>
+        <p>Перед важным выбором спрашивай себя: «Это действительно мой выбор или я действую под влиянием других людей?»</p>
+        <div class="label">Зачем? Это помогает формировать самостоятельность и собственную жизненную позицию.</div>
+      </article>
+
+      <article class="step">
+        <div class="step__head"><div class="num">8</div><h2>Формируй собственную позицию по важным вопросам.</h2></div>
+        <p>После обсуждения спорной темы попробуй самостоятельно сформулировать своё мнение и подобрать аргументы.</p>
+        <div class="label">Зачем? Умение отстаивать свою точку зрения является важной частью взросления.</div>
+      </article>
+
+      <article class="step">
+        <div class="step__head"><div class="num">9</div><h2>Оценивай соответствие своих поступков своим ценностям.</h2></div>
+        <p>Подумай, насколько твои действия соответствуют тому, что ты считаешь важным в жизни.</p>
+        <div class="label">Зачем? Это помогает быть более последовательным и честным с самим собой.</div>
+      </article>
+
+      <article class="step">
+        <div class="step__head"><div class="num">10</div><h2>Создай образ своего будущего.</h2></div>
+        <p>Опиши, каким человеком ты хочешь стать через 10 лет и какие шаги для этого необходимо сделать уже сейчас.</p>
+        <div class="label">Зачем? Представление о будущем помогает лучше понимать свои цели и мотивирует к развитию.</div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

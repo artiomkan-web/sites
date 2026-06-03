@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Папка моих достижений</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: rgba(255, 255, 255, 0.92);
+      --text: #172033;
+      --muted: #556179;
+      --accent: #4f7cff;
+      --accent-2: #7c5cff;
+      --line: rgba(23, 32, 51, 0.08);
+      --shadow: 0 20px 50px rgba(23, 32, 51, 0.10);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(circle at top, rgba(79, 124, 255, 0.10), transparent 34%),
+        radial-gradient(circle at 90% 10%, rgba(124, 92, 255, 0.10), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      background: linear-gradient(135deg, #20325f 0%, #3d5bd7 45%, #7c5cff 100%);
+      color: white;
+      box-shadow: var(--shadow);
+      min-height: 340px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: center;
+      padding: 28px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.10);
+      filter: blur(2px);
+    }
+
+    .hero::before {
+      width: 220px;
+      height: 220px;
+      top: -70px;
+      right: -40px;
+    }
+
+    .hero::after {
+      width: 140px;
+      height: 140px;
+      bottom: -40px;
+      left: 38%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 58ch;
+      font-size: clamp(1rem, 1.3vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .hero-art {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 28px;
+      padding: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-art img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+    }
+
+    .content {
+      margin-top: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .intro-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .intro-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(23, 32, 51, 0.10);
+    }
+
+    .item-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .num {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: white;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 20px rgba(79, 124, 255, 0.24);
+    }
+
+    .item h2 {
+      margin: 0;
+      font-size: 1.03rem;
+      line-height: 1.3;
+    }
+
+    .task {
+      margin: 0;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .why {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(79, 124, 255, 0.08);
+      border: 1px solid rgba(79, 124, 255, 0.14);
+      color: var(--muted);
+    }
+
+    .why strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art {
+        max-width: 520px;
+        margin: 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(100% - 20px, 1100px);
+        padding-top: 10px;
+      }
+
+      .hero {
+        padding: 18px;
+        border-radius: 24px;
+        min-height: auto;
+      }
+
+      .item {
+        padding: 16px;
+      }
+
+      .num {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-label="Папка моих достижений">
+      <div class="hero-content">
+        <div class="eyebrow">Самопознание • достижения • уверенность</div>
+        <h1>10 шагов к знакомству с самим собой</h1>
+        <p class="lead">
+          Простые упражнения, которые помогают замечать свои сильные стороны,
+          понимать эмоции и лучше узнавать себя каждый день.
+        </p>
+      </div>
+
+      <div class="hero-art">
+        <img
+          alt="Иллюстрация папки с достижениями"
+          src="image.jpg" />
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="intro-card">
+        <p>
+          Открой страницу и последовательно заполняй каждый пункт. Так будет удобнее
+          отслеживать свои успехи, интересы и качества характера.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="item">
+          <div class="item-head">
+            <div class="num">1</div>
+            <h2>Собери «Папку моих достижений»</h2>
+          </div>
+          <p class="task">Складывай туда грамоты, рисунки, удачные контрольные работы, фотографии своих поделок и спортивных успехов. Раз в месяц пересматривай её и отмечай, что у тебя получается лучше всего.</p>
+          <div class="why"><strong>Зачем?</strong> Это поможет увидеть свои сильные стороны и понять, в чем ты действительно успешен.</div>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="num">2</div>
+            <h2>Попроси трёх близких людей рассказать о твоих сильных сторонах</h2>
+          </div>
+          <p class="task">Спроси родителей, учителя или друга: «За что меня можно похвалить?» Запиши ответы и найди качества, которые повторяются чаще всего.</p>
+          <div class="why"><strong>Зачем?</strong> Иногда окружающие замечают наши достоинства лучше, чем мы сами.</div>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="num">3</div>
+            <h2>Составь список любимых занятий</h2>
+          </div>
+          <p class="task">Запиши всё, что тебе нравится делать в свободное время. Затем отметь, что приносит тебе больше радости и что получается лучше остальных занятий.</p>
+          <div class="why"><strong>Зачем?</strong> Так ты сможешь лучше понять свои интересы и способности.</div>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="num">4</div>
+            <h2>Веди календарь настроения</h2>
+          </div>
+          <p class="task">Каждый день отмечай цветом своё настроение и кратко записывай причину. Через неделю проанализируй, какие события чаще всего делают тебя радостным, а какие огорчают.</p>
+          <div class="why"><strong>Зачем?</strong> Это научит лучше понимать свои эмоции и причины их появления.</div>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="num">5</div>
+            <h2>Пробуй новые виды деятельности</h2>
+          </div>
+          <p class="task">Раз в неделю участвуй в новом деле: спортивной игре, творческом задании, школьном мероприятии.</p>
+          <div class="why"><strong>Зачем?</strong> Новые занятия помогают открыть способности, о которых ты раньше даже не подозревал.</div>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="num">6</div>
+            <h2>Учись замечать свои эмоции</h2>
+          </div>
+          <p class="task">Когда испытываешь сильное чувство, остановись и ответь себе на вопросы: «Что я сейчас чувствую? Почему это произошло?»</p>
+          <div class="why"><strong>Зачем?</strong> Понимание своих эмоций помогает лучше управлять своим поведением.</div>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="num">7</div>
+            <h2>Сравнивай свои поступки с собственными правилами</h2>
+          </div>
+          <p class="task">После важных ситуаций спрашивай себя: «Поступил ли я так, как считаю правильным? Что бы я изменил в следующий раз?»</p>
+          <div class="why"><strong>Зачем?</strong> Это помогает развивать ответственность за свои действия.</div>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="num">8</div>
+            <h2>Создай «Мой портрет»</h2>
+          </div>
+          <p class="task">Раздели лист на четыре части: «Я умею», «Мне нравится», «Я хочу научиться», «Мне нужна помощь». Заполни все разделы и периодически дополняй их.</p>
+          <div class="why"><strong>Зачем?</strong> Такое упражнение помогает лучше понять себя и увидеть направления для развития.</div>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="num">9</div>
+            <h2>Наблюдай за собой в общении</h2>
+          </div>
+          <p class="task">После разговора с друзьями или одноклассниками подумай: легко ли тебе знакомиться, помогать другим, работать в команде.</p>
+          <div class="why"><strong>Зачем?</strong> Так ты сможешь лучше узнать особенности своего характера и общения с людьми.</div>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <div class="num">10</div>
+            <h2>Каждый вечер называй три своих удачных действия за день</h2>
+          </div>
+          <p class="task">Даже если они кажутся небольшими: ответил у доски, помог другу, выполнил обещание.</p>
+          <div class="why"><strong>Зачем?</strong> Это помогает замечать свои успехи и укрепляет уверенность в себе.</div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
